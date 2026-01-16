@@ -1,0 +1,76 @@
+:root {
+  --blue: #00B4D8;
+  --dark: #0D1B2A;
+}
+
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: var(--dark); }
+
+/* Canvas full screen real */
+#p5-container { position: absolute; inset: 0; width: 100vw; height: 100vh; z-index: 1; }
+#p5-container canvas { display: block; }
+
+/* Modal estilitzat */
+#config-panel {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 85%; max-width: 320px; background: rgba(13, 27, 42, 0.98);
+  color: white; padding: 25px; border-radius: 25px; z-index: 2000;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+}
+body.light-mode #config-panel { background: white; color: var(--dark); border: none; }
+
+.config-group { margin-bottom: 15px; }
+.config-group label { display: block; font-size: 13px; margin-bottom: 5px; opacity: 0.7; }
+.config-group input, .config-group select {
+  width: 100%; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05); color: inherit; box-sizing: border-box;
+}
+
+/* Resultats de cerca */
+#city-results {
+  list-style: none; padding: 0; margin: 5px 0 0; background: white; color: black;
+  border-radius: 10px; max-height: 120px; overflow-y: auto; z-index: 3000;
+}
+#city-results li { padding: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
+
+/* Fila de checks */
+.config-check-group { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-bottom: 15px; }
+.no-border { border: none !important; padding-top: 0 !important; margin-bottom: 10px; }
+.check-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+
+/* Botons d'acció del modal */
+.config-actions { display: flex; gap: 10px; margin-top: 20px; }
+.btn-save { flex: 2; background: var(--blue); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: bold; }
+.btn-cancel { flex: 1; background: #333; color: white; border: none; border-radius: 12px; }
+
+/* Botó flotant ⚙️ - Corregit */
+#config-toggle {
+  position: fixed; 
+  /* Baixem de 20px a 60px per evitar la barra d'estat/bateria */
+  top: 60px;         
+  right: 25px;       
+  width: 50px; height: 50px;
+  border-radius: 50%; 
+  background: rgba(255, 255, 255, 0.15); /* Una mica més transparent */
+  backdrop-filter: blur(5px);
+  color: white; 
+  border: 1px solid rgba(255,255,255,0.2); 
+  font-size: 24px; 
+  z-index: 1000;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; /* Centrar la icona perfectament */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Ombra suau */
+}
+
+/* Ajust pel mode clar */
+body.light-mode #config-toggle {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.hidden { display: none !important; }
+#config-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1500; }
+
+/* Splash Original */
+#splash-screen { position: fixed; inset: 0; background: #15b8d4; display: flex; align-items: center; justify-content: center; z-index: 5000; }
+#splash-logo { width: 280px; border-radius: 28px; }

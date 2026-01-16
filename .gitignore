@@ -1,0 +1,10 @@
+# Dependències (Molt important: això evita que pugi node_modules)
+node_modules/
+
+# Compilacions web
+dist/
+www/
+
+# Arxius de sistema
+.DS_Store
+Thumbs.db

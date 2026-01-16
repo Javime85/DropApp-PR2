@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Viewport crític per a mòbils: evita que l'usuari faci zoom i ajusta l'escala -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>DropApp</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- 
+      CAPA 3: Splash Screen 
+      Es mostra només al carregar. Tapa tota l'aplicació fins que el JS l'amaga.
+    -->
+    <div id="splash-screen">
+      <img src="/dropapp_logo.png" alt="Logo DropApp" id="splash-logo" />
+    </div>
+
+    <!-- Contenidor principal de l'aplicació (inicialment ocult per fer l'efecte de càrrega) -->
+    <div id="app-container" style="display: none">
+      
+      <!-- CAPA 1 (Fons): Aquí p5.js injectarà el <canvas> -->
+      <div id="p5-container"></div>
+      
+      <!-- CAPA 2 (Interfície): Panells de configuració HTML (DOM) sobreposats al Canvas -->
+      <div id="config-backdrop" class="hidden"></div> <!-- Fons fosc semitransparent -->
+      
+      <div id="config-panel" class="hidden">
+        <h2>Configuració DropApp</h2>
+
+        <!-- Opció: GPS Automàtic vs Manual -->
+        <div class="config-check-group no-border">
+          <div class="check-item">
+            <span>Ubicació GPS (Automàtic)</span>
+            <input type="checkbox" id="chk-gps-auto" />
+          </div>
+        </div>
+
+        <!-- Opció: Cerca manual (s'amaga si GPS està actiu) -->
+        <div class="config-group" id="manual-city-group">
+          <label>Cerca ciutat manual</label>
+          <input type="text" id="config-city-search" placeholder="Escriu una ciutat..." />
+          <!-- Llista de resultats de l'API Geocoding -->
+          <ul id="city-results" class="hidden"></ul>
+        </div>
+
+        <!-- Paràmetre: Temps entre gotes -->
+        <div class="config-group">
+          <label>Hores entre dosis</label>
+          <input type="number" id="config-interval-hours" min="1" max="24" value="1" />
+        </div>
+
+        <!-- Paràmetre: Tema (connectat a CSS body class) -->
+        <div class="config-group">
+          <label>Tema de l'App</label>
+          <select id="config-dark-mode">
+            <option value="on">Mode Nit (Fosc)</option>
+            <option value="off">Mode Dia (Clar)</option>
+          </select>
+        </div>
+
+        <!-- Control de Hardware: Permet a l'usuari desactivar funcions natives -->
+        <div class="config-check-group">
+          <div class="check-item"><span>Notificacions</span><input type="checkbox" id="chk-notificacio" checked /></div>
+          <div class="check-item"><span>Llanterna</span><input type="checkbox" id="chk-flash" /></div>
+        </div>
+
+        <div class="config-actions">
+          <button id="config-cancel" class="btn-cancel">Cancel·lar</button>
+          <button id="config-save" class="btn-save">Desar canvis</button>
+        </div>
+      </div>
+
+      <!-- Botó flotant (Floating Action Button) per obrir la config -->
+      <button id="config-toggle" aria-label="Configuració">⚙️</button>
+    </div>
+
+    <!-- Scripts: Primer llibreria gràfica, després lògica principal -->
+    <script src="/p5.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
