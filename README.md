@@ -42,6 +42,7 @@ dropapp/
 ├── package.json
 ├── package-lock.json
 └── README.md
+```
 
 ## Tecnologies utilitzades
 
