@@ -16,6 +16,17 @@ DropApp evoluciona en aquesta PR2 per no només recordar l'aplicació de gotes o
   * Llanterna (mode fix i parpelleig estroboscòpic) com a senyal visual.
   * Vibració hàptica coordinada.
 - **Configuració Persistent:** Emmagatzematge local (`localStorage`) de preferències, intervals i darreres dades climàtiques.
+- **Mode de proves (debug):** Si a la configuració s’estableixen les “Hores entre dosis” a `0`, l’app activa un mode de test intern en què l’interval es redueix a 1 minut. Això permet comprovar totes les fases de l’alarma (pre-avís, estroboscopi, vibració i notificació) sense esperar una hora real.
+- **Tema dia/nit:** L’usuari pot escollir entre un tema fosc (mode nit) i un tema clar (mode dia). El fons degradat del canvas i el tint de la gota s’adapten al tema seleccionat, mantenint la llegibilitat i reforçant la sensació de context ambiental.
+
+## Flux de geolocalització i dades
+
+DropApp combina geolocalització i dades climàtiques en tres passos principals:
+
+- **GPS o ciutat manual:** L’usuari pot activar la “Ubicació GPS (Automàtic)” o bé cercar una ciutat manualment. En mode manual, les coordenades triades es desen a `localStorage` per reutilitzar-les.
+- **Reverse Geocoding (BigDataCloud):** A partir de la latitud/longitud obtinguda (via GPS o via IP en cas de fallback), es consulta BigDataCloud per mostrar un nom de ciutat en català al canvas.
+- **Clima (Open-Meteo):** Amb les mateixes coordenades es demana la humitat relativa i la temperatura actual a Open-Meteo, que l’app interpreta per mostrar un estat com ara “Ambient SEC ⚠️ (Posa’t gotes!)”.
+
 
 ## Estructura del projecte
 
@@ -54,6 +65,9 @@ dropapp/
   * `@capacitor/local-notifications`: Per als avisos del sistema.
   * `@capacitor/haptics`: Per a la resposta tàctil (vibració).
   * `@capawesome/capacitor-torch`: Per al control de la llanterna.
+ 
+> Nota: L’app sol·licita permisos com `POST_NOTIFICATIONS` i `SCHEDULE_EXACT_ALARM` per adaptar-se als requisits d’Android recents. En aquesta PR2, la precisió del recordatori es basa en el temporitzador intern i en una notificació local immediata quan s’esgota el compte enrere.
+
 
 ## Instal·lació i execució
 
