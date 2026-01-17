@@ -98,7 +98,8 @@ Pots obtenir el codi d'aquest projecte de dues maneres:
 2. **Clonar el repositori:**
    ```bash
    git clone https://github.com/Javime85/DropApp-PR2.git
-
+   ```
+   
 El projecte s'ha testejat satisfactòriament en un **Xiaomi Redmi Note 14 Pro** amb **Android 15**.
 
 ## Llicència
