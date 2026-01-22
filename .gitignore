@@ -1,0 +1,21 @@
+# --- DEPENDÈNCIES I BUILD WEB ---
+node_modules/
+dist/
+www/
+.DS_Store
+Thumbs.db
+
+# --- ANDROID (IMPORTANT) ---
+# Bloqueja els arxius temporals i de compilació (que pesen molt)
+android/.gradle/
+android/app/build/
+android/build/
+
+# Bloqueja arxius locals (tenen rutes del teu PC que trenquen el projecte a altres PCs)
+android/local.properties
+android/.idea/
+android/app/*.iml
+android/*.iml
+
+# Bloqueja carpetes de captures o outputs
+android/captures/

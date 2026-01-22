@@ -1,0 +1,161 @@
+/*
+ * Javier Villalón Mena - UOC PR2 Desenvolupament d'aplicacions interactives
+ * Estils responsius: Splash, modal config, mode fosc/clar, bot flotant ⚙️.
+ * Backdrop blur per UX moderna. Adaptat Android WebView (no zoom).
+ * Testejat Xiaomi Redmi Note 14 Pro Android 15.
+ */
+
+:root {
+  --blue: #00B4D8;
+  --dark: #0D1B2A;
+}
+
+/* Configuració base per evitar scroll i seleccionar text al mòbil */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+}
+
+/* 
+   ESTILS SPLASH SCREEN 
+   Centrat absolut amb Flexbox i disposició en columna (Vertical)
+*/
+#splash-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #15B8D4; /* Color corporatiu */
+    display: flex;
+    flex-direction: column; /* IMPORTANT: Posa el logo a sobre i el text a sota */
+    align-items: center;
+    justify-content: center;
+    z-index: 5000; /* Assegura que tapa tota la UI mentre carrega */
+}
+
+#splash-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    margin-bottom: 20px; /* Espai entre la imatge i el text */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Ombra per donar profunditat */
+}
+
+.splash-text {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    animation: pulse 1.5s infinite ease-in-out; /* Feedback d'activitat */
+}
+
+/* Animació de "batec" per indicar que l'app està pensant */
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+/* Canvas de p5.js a pantalla completa */
+#p5-container {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+#p5-container canvas { display: block; }
+
+
+/* ESTILS DEL PANELL DE CONFIGURACIÓ (MODAL) */
+#config-panel {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 320px;
+  background: rgba(13, 27, 42, 0.98); /* Fons fosc semitransparent */
+  color: white;
+  padding: 25px;
+  border-radius: 25px;
+  z-index: 2000;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Adaptació Mode Clar per al panell */
+body.light-mode #config-panel {
+  background: white;
+  color: var(--dark);
+  border: none;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* Camps de formulari */
+.config-group { margin-bottom: 15px; }
+.config-group label { display: block; font-size: 13px; margin-bottom: 5px; opacity: 0.7; }
+.config-group input, .config-group select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: inherit;
+  box-sizing: border-box;
+  font-size: 16px; /* Evita zoom automàtic en iOS */
+}
+
+/* Llista de resultats de cerca */
+#city-results {
+  list-style: none;
+  padding: 0; margin: 5px 0 0;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  max-height: 120px;
+  overflow-y: auto;
+  z-index: 3000;
+  position: absolute; /* Per sobre de la resta */
+  width: calc(100% - 50px);
+}
+#city-results li { padding: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
+
+/* Grups de Checkbox */
+.config-check-group { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-bottom: 15px; }
+.no-border { border: none !important; padding-top: 0 !important; margin-bottom: 10px; }
+.check-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+
+/* Botons del modal */
+.config-actions { display: flex; gap: 10px; margin-top: 20px; }
+.btn-save { flex: 2; background: var(--blue); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: bold; }
+.btn-cancel { flex: 1; background: #333; color: white; border: none; border-radius: 12px; }
+
+/* Botó flotant de Configuració */
+#config-toggle {
+  position: fixed;
+  top: 60px; right: 25px; /* Ubicació per evitar barra d'estat */
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 24px;
+  z-index: 1000;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+body.light-mode #config-toggle {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.hidden { display: none !important; }
+#config-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1500; }
