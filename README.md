@@ -63,14 +63,6 @@ dropapp/
 Configuració → Apps → DropApp → "Alarmes i recordatoris" → Activar
 (Sense això, alarmes exactes fallen per seguretat Android.)
 
-## Instal·lació
-
-```bash
-npm install
-npm run build
-npx cap sync android
-npx cap open android
-```
 ## Tecnologies usades
 - **Vite + JavaScript:** Entorn de desenvolupament modern.
 - **p5.js:** Renderitzat del canvas i lògica visual reactiva.
