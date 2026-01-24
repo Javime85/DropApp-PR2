@@ -15,18 +15,15 @@ DropApp evoluciona en aquesta PR2 per contextualitzar la necessitat de l'usuari 
 
 ## Funcionalitat
 
-- **Temporitzador visual:** p5.js amb comptador basat en timestamps.
+- **Temporitzador visual:** p5.js amb comptador basat en timestamps absoluts. Això garanteix que el temps no es dessincronitzi encara que el sistema "congeli" el JavaScript.
 - **Geolocalització (API):** Coordenades → nom localitat catalana (BigDataCloud Reverse Geocoding).
 - **Alertes natives:**
-  - Notificació local (canal `dropappalerts`, importance 5).
+  - Notificació local (canal `dropappalerts`, prioritat alta).
   - Llanterna (modes: fix/estroboscòpic via màquina d'estats).
   - Vibració hàptica coordinada.
-- **Configuració persistent:** localStorage (intervals, mode fosc/clar, GPS manual).
-- **Objecte global:** `window.eyeWeather` compartit main.js ↔ sketch.js.
-- **Precisió en segon pla:** Implementació de càlculs basats en timestamps absoluts (`Date.now()`) per garantir que el temporitzador no es dessincronitzi mai, fins i tot si el sistema "congela" el JavaScript.
+- **Configuració persistent:** `localStorage` (intervals, mode fosc/clar, GPS manual).
 - **Estratègia de Resurrecció:** L'app detecta quan l'usuari torna a entrar des de la notificació i reactiva immediatament el hardware (flash/vibració) si el temps s'ha esgotat.
-- **Notificacions Natives Robustes:** Implementació de canals de notificació prioritaris i ús d'icones natives personalitzades (`ic_stat_dropapp`) per complir amb els estàndards visuals d'Android 13+.
-- **Context Ambiental:** Connexió amb l'API Open-Meteo. La gota de p5.js canvia de color (tint groguenc) si la humitat és inferior al 35% (risc de sequedat ocular).
+- **Context Ambiental:** Connexió amb l'API Open-Meteo. La gota visual es tenyeix de groc si la humitat és inferior al 35%.
 
 ## Estructura del projecte
 
@@ -45,23 +42,6 @@ dropapp/
 ├── package.json
 └── README.md
 ```
-
-## Tecnologies
-
-- **Vite + JS ES6**
-- **p5.js** 
-- **Capacitor 6**
-- **Plugins:** `@capacitor/geolocation`, `@capacitor/local-notifications`, `@capacitor/haptics`, `@capawesome/capacitor-torch`
-
-## Instruccions correcció/testeig
-
-### 1. Mode Test Ràpid (1 min)
-- Config → "Hores entre dosis" = **0** → Auto: 60s.
-- Prova tot: pre-avís llanterna → strobe → vibració → notificació.
-
-### 2. Permisos Android 12+ **CRÍTIC**
-Configuració → Apps → DropApp → "Alarmes i recordatoris" → Activar
-(Sense això, alarmes exactes fallen per seguretat Android.)
 
 ## Tecnologies usades
 - **Vite + JavaScript:** Entorn de desenvolupament modern.
