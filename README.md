@@ -85,13 +85,28 @@ Per veure el cicle complet sense esperar:
 4. En prémer "Iniciar", el temporitzador es configurarà automàticament a **1 minut**.
    *Això permet validar ràpidament la transició d'estats: pre-avís, notificació en background i activació del flash al retornar.*
 
-### 2. Permisos d'Alarma Exacta (Android 12+)
-L'app utilitza el permís `SCHEDULE_EXACT_ALARM` per garantir la puntualitat. Com que és una app acadèmica no signada per Google Play, alguns dispositius restringeixen aquest permís per defecte.
-**Si la notificació no arriba al minut exacte:**
-1. Aneu a **Configuració del dispositiu** -> **Aplicacions**.
-2. Busqueu **DropApp**.
-3. Entreu a l'apartat **Alarmes i recordatoris** (Alarms & Reminders).
-4. Activeu l'interruptor **Permetre** (Allow setting alarms and reminders).
+### 2. Configuració de Notificacions i Segon Pla (Xiaomi/Redmi)
+
+Per garantir que **DropApp** funcioni correctament en segon pla i les notificacions arribin puntuals, cal ajustar manualment la configuració seguint els literals exactes del sistema:
+
+**1. Evitar que el sistema retiri permisos:**
+*   Mantingues premuda la icona de l'app i selecciona **Info. de la aplicación**.
+*   Entra a **Permisos de la aplicación**.
+*   Busca al final i **DESACTIVA** l'interruptor que diu: **"Pausar la actividad de la aplicación si no se utiliza"**.
+
+**2. Permisos addicionals (Important en Xiaomi):**
+*   Torna enrere a la pantalla d'**Info. de la aplicación**.
+*   Entra a l'apartat **Otros permisos**.
+*   Busca l'opció **Accesos directos de la pantalla de inicio**. Si surt amb una creu vermella, prem-la i selecciona **Permitir siempre**.
+
+**3. Configuració de Notificacions:**
+*   Dins d'**Info. de la aplicación**, entra a **Notificaciones**.
+*   A la part inferior, fixa't en l'apartat **Categorías de notificaciones**.
+    *   Entra dins de **Default**: Assegura't que **Permitir notificaciones** estigui activat, així com el **Sonido** i la **Vibración**.
+    *   Entra dins de **Alertes Crítiques Dropapp**: Igual que l'anterior, activa totes les opcions manualment si apareixen desactivades.
+
+**4. Permís d'Alarma Exacta:**
+*   Si apareix l'opció a la llista de configuració, entra a **Alarmas y recordatorios** i activa l'interruptor **Permitir la configuración de alarmas y recordatorios**.
 
 ## Instal·lació i execució
 
