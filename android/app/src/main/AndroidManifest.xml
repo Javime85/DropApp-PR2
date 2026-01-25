@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Javier Villalón Mena - UOC PR2. Permisos: SCHEDULE_EXACT_ALARM, GPS, CAMERA(flash).
      Canal notificacions: dropappalerts (importance 5). Icona: ic_stat_dropapp.
-     Soluciona restriccions Android 13+ i MIUI. FIX 22/01/2026: tools:node compatibilitat. -->
+     Soluciona restriccions Android 13+ i MIUI. -->
      
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
