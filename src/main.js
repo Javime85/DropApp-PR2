@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
   } catch(e) { console.error("Error creant canal", e); }
 
-  // 3. LISTENERS DEL CICLE DE VIDA (CLAU PER A L'ÈXIT)
+  // 3. LISTENERS DEL CICLE DE VIDA 
   
   // Quan l'usuari toca la notificació, l'app s'obre.
   // Aturem el hardware "extra" per permetre a l'usuari interactuar.
@@ -193,7 +193,6 @@ window.stopAndResetHardware = async () => {
 window.dropappVibrate = () => Haptics.vibrate();
 
 // ======================= LÒGICA API CLIMÀTICA =======================
-// (Mantinguda igual que la teva versió original, funciona bé)
 
 async function updateWeatherFromStorage() {
   const isAuto = localStorage.getItem('dropapp_gps_auto') === 'true';
@@ -249,7 +248,6 @@ async function fetchWeather(lat, lon, cityName) {
 
 // ======================= CONFIGURACIÓ DOM =======================
 function setupConfigLogic() {
-  // (Mantinguda igual que la teva versió original)
   const searchInput = document.getElementById('config-city-search');
   const resultsList = document.getElementById('city-results');
   const chkGPS = document.getElementById('chk-gps-auto');
