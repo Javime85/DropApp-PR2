@@ -2,7 +2,7 @@
  * Javier Villalón Mena - UOC PR2 Desenvolupament d'aplicacions interactives
  * Capa Visual p5.js: Màquina estats llanterna (0off/1fix/2strobe), tint gota <35% hum.
  * Lligat a window.eyeWeather de main.js. Timestamps absoluts per segon pla.
- * Mode debug: interval 0 = 60s. Captures en folio.
+ * Mode debug: interval 0 = 60s.
  */
 
 let dropappSketch = (p) => {
@@ -188,9 +188,9 @@ let dropappSketch = (p) => {
       p.text("Sintonitzant clima...", p.width/2, p.height * 0.20);
     }
 
-    // ==========================================================
+    // =============================
     // SECCIÓ CENTRAL: GOTA ANIMADA
-    // ==========================================================
+    // =============================
     p.imageMode(p.CENTER);
     if (window.eyeWeather && parseFloat(window.eyeWeather.hum) < 35 && !alertActive) {
       p.tint(255, 200, 100); // Tint taronja/groc si està sec
