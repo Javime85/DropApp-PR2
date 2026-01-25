@@ -107,7 +107,7 @@ body.light-mode #config-panel {
   background: rgba(255,255,255,0.05);
   color: inherit;
   box-sizing: border-box;
-  font-size: 16px; /* Evita zoom automàtic en iOS */
+  font-size: 16px;
 }
 
 /* Llista de resultats de cerca */
