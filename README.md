@@ -32,13 +32,18 @@ dropapp/
 ├── android/                  
 ├── public/                  
 │   ├── css/style.css         
-│   ├── dropapp_logo.png      
+│   ├── dropapp_logo.png
+│   ├── p5.js
+│   ├── p5.sound.min.js
 │   └── gota.png
 ├── src/                      
 │   ├── main.js                
 │   └── sketch.js              
+├── .gitignore
+├── LICENSE
 ├── capacitor.config.ts        
-├── index.html                 
+├── index.html
+├── package-lock.json                
 ├── package.json
 └── README.md
 ```
