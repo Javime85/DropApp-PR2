@@ -3,7 +3,6 @@
  * Capa Visual p5.js: Màquina estats llanterna (0off/1fix/2strobe), tint gota <35% hum.
  * Lligat a window.eyeWeather de main.js. Timestamps absoluts per segon pla.
  * Mode debug: interval 0 = 60s. Captures en folio.
- * FIX UI FINAL: Solapament text clima solucionat (caixa flexible) i estètica millorada.
  */
 
 let dropappSketch = (p) => {
@@ -127,9 +126,9 @@ let dropappSketch = (p) => {
     let isDay = document.body.classList.contains('light-mode') && !alertActive;
     let mainColor = alertActive ? 255 : (isDay ? 30 : 255);
     
-    // ==========================================================
-    // SECCIÓ SUPERIOR: INFO CLIMÀTICA (Textos ben alineats)
-    // ==========================================================
+    // ================================
+    // SECCIÓ SUPERIOR: INFO CLIMÀTICA
+    // ================================
     if (window.eyeWeather && window.eyeWeather.city) {
       
       let startY = p.height * 0.16; // Marge superior relatiu
@@ -208,9 +207,9 @@ let dropappSketch = (p) => {
     if (imgGota) p.image(imgGota, p.width/2, p.height * 0.56, baseW + pulse, (baseW*1.33) + pulse);
     p.noTint();
 
-    // ==========================================================
+    // ===================================
     // SECCIÓ INFERIOR: RELLOTGE I BOTONS
-    // ==========================================================
+    // ===================================
     p.fill(mainColor);
     let s = Math.ceil(rem / 1000); 
     let timeStr = `${p.nf(Math.floor(s/3600),2)}:${p.nf(Math.floor((s%3600)/60),2)}:${p.nf(s%60,2)}`;
@@ -241,7 +240,7 @@ let dropappSketch = (p) => {
     btn(p.width * 0.75, btnY, btnW + btnScale, btnH + btnScale, "Gota posada", btnColor, "#FFFFFF");
   }
 
-  // Funció auxiliar per dibuixar botons macos
+  // Funció auxiliar per dibuixar botons
   function btn(x, y, w, h, t, bg, tc) {
     p.drawingContext.shadowBlur = 15;
     p.drawingContext.shadowColor = 'rgba(0,0,0,0.3)';
