@@ -107,7 +107,7 @@
            El plugin LocalNotifications defineix aquest receiver com a exported="false" per defecte.
            Això provoca que en Android 12+ les notificacions fallin al reiniciar el mòbil.
            Forcem exported="true" amb 'tools:replace' per solucionar-ho.
-           FIX 22/01/2026: tools:node="replace" per evitar duplicats Android Studio.
+           tools:node="replace" per evitar duplicats Android Studio.
         -->
         <receiver 
             android:name="com.capacitorjs.plugins.localnotifications.LocalNotificationRestoreReceiver" 
