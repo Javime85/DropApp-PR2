@@ -203,7 +203,7 @@ let dropappSketch = (p) => {
     let baseW = Math.min(p.width * 0.55, 220);
     let pulse = alertActive ? Math.sin(p.millis() / 80) * 15 : Math.sin(p.millis() / 1000) * 5;
     
-    // Ubiquem la gota una mica més avall (0.56) per donar espai al text
+    // Ubiquem de la gota
     if (imgGota) p.image(imgGota, p.width/2, p.height * 0.56, baseW + pulse, (baseW*1.33) + pulse);
     p.noTint();
 
